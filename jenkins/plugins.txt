@@ -1,13 +1,7 @@
-# The current version of the credentials-binding plugin (v1.12)
-# provided with the OpenShift image has an issue:
-# https://issues.jenkins-ci.org/browse/JENKINS-41760
-# It adds erroneous asterisks after using whenCredentials. The
-# other plugins are added as prerequisites for the updated plugin.
+# Our plugins
 
-credentials-binding:1.13
-credentials:2.1.16
-ssh-credentials:1.13
-workflow-step-api:2.13
+slack:2.3
+sonar:2.6.1
 
 # Jenkins JVM / Application monitoring
 monitoring:1.70.0

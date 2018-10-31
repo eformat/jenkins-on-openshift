@@ -1,7 +1,7 @@
 ---
 # The deployed Jenkins instance uses a PersistentVolumeClaim. This var
 # specifies the requested size of the PVC
-jenkins_volume_size: 2Gi
+jenkins_volume_size: 1Gi
 # The {registry,stage,prod}_api_secret_names set the names of the secrets that
 # are created to store tokens to be sync'd to Jenkins credentials to allow jobs
 # (which run in the dev environment) to access the projects/clusters of the

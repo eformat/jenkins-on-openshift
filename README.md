@@ -2,6 +2,10 @@
 
 **Using Jenkins to Control Application Promotion between OpenShift Clusters**
 
+Referece Documentation:
+
+https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/application_cicd_on_openshift_container_platform_with_jenkins/
+
 ## Overview
 
 This repo has 3 primary components:
@@ -33,3 +37,35 @@ The Vagrantfile is provided to bootstrap a local RHEL-based workstation pre-inst
 
         vagrant plugin install vagrant-triggers
 - Install Red Hat Enterprise Linux vagrant box. [Download](https://developers.redhat.com/products/rhel/download/)
+
+
+## Instructions
+
+Docs and configuration updated for v3.11
+
+```bash
+# Clone this repo
+git clone https://github.com/eformat/jenkins-on-openshift.git
+cd jenkins-on-openshift/ansible
+
+# Create configuration
+for i in group_vars/*.example; do mv "${i}" "${i/.example}"; done
+
+# Ansible setup
+ansible-playbook -i inventory.yml main.yml --extra-vars token=$(oc whoami -t)
+
+# Check jenkins custom build completes and it starts up OK
+oc login
+oc project dev
+oc get build -l 'buildconfig=jenkins-custom' --template '{{with index .items 0}}{{.status.phase}}{{end}}'
+oc get pod -l 'name==jenkins'
+oc logs -f dc/jenkins 
+
+# start app build
+oc start-build app-pipeline
+
+
+# delete / tidy everything in this lab
+oc delete project dev prod stage registry
+
+```

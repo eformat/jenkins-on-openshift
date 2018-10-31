@@ -62,6 +62,18 @@
       ignore_errors: True
       no_log: "{{ oc_no_log }}"
 
+    - name: Create Image Pull Secret
+      command: >-
+        {{ oc }} create -f {{ pull_secret_filename }} -n {{ project_name }}
+      ignore_errors: True
+      no_log: "{{ oc_no_log }}"
+
+    - name: Link Secret to default serviceaccount
+      command: >-
+        {{ oc }} secrets link default {{ pull_secret_name }} --for=pull -n {{ project_name }}
+      ignore_errors: True
+      no_log: "{{ oc_no_log }}"
+
 - name: Configure project authorization
   hosts: all
   roles:

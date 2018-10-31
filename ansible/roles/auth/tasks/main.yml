@@ -95,3 +95,9 @@
     pushtoken: "{{ forpush.stdout }}"
     pulltoken: "{{ forpull.stdout }}"
   no_log: "{{ oc_no_log }}"
+
+- name: Link Pull Secret to jenkins serviceaccount
+  command: >-
+    {{ oc }} secrets link jenkins {{ pull_secret_name }} --for=pull -n {{ project_name }}
+  ignore_errors: True
+  no_log: "{{ oc_no_log }}"
