@@ -1,6 +1,6 @@
 .idea/
 jenkins-on-openshift.iml
-ansible/host_vars/*.yml
+ansible/host_vars/*.yml.*
 ansible/group_vars/*.yml
 ansible/group_vars/*.yaml
 .gradle/
