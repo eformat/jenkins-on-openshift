@@ -2,7 +2,7 @@
 
 **Using Jenkins to Control Application Promotion between OpenShift Clusters**
 
-Referece Documentation:
+Reference Documentation:
 
 https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/application_cicd_on_openshift_container_platform_with_jenkins/
 
@@ -43,6 +43,15 @@ The Vagrantfile is provided to bootstrap a local RHEL-based workstation pre-inst
 
 Docs and configuration updated for v3.11
 
+Custom configured files for this environment:
+
+```
+ansible/group_vars/*.yml
+configuration/hudson.tasks.Mailer.xml
+```
+
+Shortcut instructions from the documents above
+
 ```bash
 # Clone this repo
 git clone https://github.com/eformat/jenkins-on-openshift.git
@@ -69,5 +78,4 @@ oc start-build release-pipeline
 
 # delete / tidy everything in this lab
 oc delete project dev prod stage registry
-
 ```
