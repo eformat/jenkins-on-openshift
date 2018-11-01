@@ -1,7 +1,7 @@
 # Our plugins
 
 slack:2.3
-sonar:2.6.1
+sonar:2.8.1
 
 # Jenkins JVM / Application monitoring
 monitoring:1.70.0
