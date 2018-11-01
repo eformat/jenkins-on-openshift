@@ -61,9 +61,11 @@ oc get build -l 'buildconfig=jenkins-custom' --template '{{with index .items 0}}
 oc get pod -l 'name==jenkins'
 oc logs -f dc/jenkins 
 
-# start app build
+# start app build pipeline
 oc start-build app-pipeline
 
+# promote app pipeline
+oc start-build release-pipeline
 
 # delete / tidy everything in this lab
 oc delete project dev prod stage registry
