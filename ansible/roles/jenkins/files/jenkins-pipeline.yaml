@@ -14,6 +14,8 @@ objects:
       git:
         uri: ${SOURCE_REPOSITORY_URL}
         ref: ${SOURCE_REPOSITORY_REF}
+      sourceSecret:
+        name:  ${SOURCE_SECRET_NAME}
     strategy:
       type:
       jenkinsPipelineStrategy:
@@ -30,3 +32,7 @@ parameters:
   displayName: Git Reference
   name: SOURCE_REPOSITORY_REF
   value: master
+- description: Source Secret Name for SCM
+  name: SOURCE_SECRET_NAME
+  required: true
+  value: "github"

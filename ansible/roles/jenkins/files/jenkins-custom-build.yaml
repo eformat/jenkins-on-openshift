@@ -37,6 +37,8 @@ objects:
         ref: ${SOURCE_REPOSITORY_REF}
       type: Git
       contextDir: ${CONTEXT_DIR}
+      sourceSecret:
+        name:  ${SOURCE_SECRET_NAME}
     strategy:
       sourceStrategy:
         from:
@@ -74,3 +76,7 @@ parameters:
   from: '[a-zA-Z0-9]{40}'
   generate: expression
   name: GENERIC_WEBHOOK_SECRET
+- description: Source Secret Name for SCM
+  name: SOURCE_SECRET_NAME
+  required: true
+  value: "github"

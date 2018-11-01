@@ -91,3 +91,13 @@
     - prod
   roles:
     - role: puller
+
+- name: Setup Github secret for development
+  hosts:
+    - dev
+  tasks:
+    - name: Create Github secret
+      command: >-
+        {{ oc }} create -f {{ github_secret_filename }} -n {{ project_name }}
+      ignore_errors: True
+      no_log: "{{ oc_no_log }}"

@@ -14,6 +14,8 @@ objects:
       git:
         uri: ${SOURCE_REPOSITORY_URL}
         ref: ${SOURCE_REPOSITORY_REF}
+      sourceSecret:
+        name:  ${SOURCE_SECRET_NAME}
     strategy:
       type: "JenkinsPipeline"
       jenkinsPipelineStrategy:
@@ -113,3 +115,7 @@ parameters:
   name: NOTIFY_EMAIL_REPLYTO
   required: true
   value: "noreply@example.com"
+- description: Source Secret Name for SCM
+  name: SOURCE_SECRET_NAME
+  required: true
+  value: "github"
