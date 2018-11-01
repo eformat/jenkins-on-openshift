@@ -51,12 +51,12 @@ oc_no_log: True
 # Client issue creating dockercfg secrets introduced
 # in v3.7.  This workaround downloads the Origin v3.6.1
 # as a temporary resolution to the issue.  See more information
-# in the links below.
+# in the links below. Not required for 3.11
 #
 # https://github.com/openshift/origin/pull/18062
 # https://bugzilla.redhat.com/show_bug.cgi?id=1531511
 # https://bugzilla.redhat.com/show_bug.cgi?id=1476330
-enable_dockercfg_workaround: True
+enable_dockercfg_workaround: False
 
 #
 # This is how the "oc" client will be invoked.
@@ -64,3 +64,13 @@ enable_dockercfg_workaround: True
 oc: >-
   {{ oc_path }} {% if not validate_certs %}--insecure-skip-tls-verify{% endif %}
   --token={{ token }} --server=https://{{ clusterhost }} -n {{ project_name }}
+
+# Pull secret filename for authenticated registry.redhat.io
+# See https://access.redhat.com/RegistryAuthentication
+#     https://access.redhat.com/terms-based-registry
+pull_secret_filename: group_vars/your-redhat-io-secret.yaml
+pull_secret_name: your-redhat-io-pull-secret-name
+
+# Github secret for pipelines so we do not hit github API limit
+github_secret_filename: group_vars/your-github-secret.yaml
+github_secret_name: your-github-secret-name
