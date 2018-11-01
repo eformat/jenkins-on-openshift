@@ -49,7 +49,7 @@ git clone https://github.com/eformat/jenkins-on-openshift.git
 cd jenkins-on-openshift/ansible
 
 # Create configuration
-for i in group_vars/*.example; do mv "${i}" "${i/.example}"; done
+#for i in group_vars/*.example; do mv "${i}" "${i/.example}"; done
 
 # Ansible setup
 ansible-playbook -i inventory.yml main.yml --extra-vars token=$(oc whoami -t)
