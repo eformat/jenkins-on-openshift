@@ -6,6 +6,11 @@ Reference Documentation:
 
 https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/application_cicd_on_openshift_container_platform_with_jenkins/
 
+Forked from:
+
+https://github.com/RHsyseng/jenkins-on-openshift
+
+
 ## Overview
 
 This repo has 3 primary components:
