@@ -96,6 +96,7 @@ pipeline {
                                     "-l app=${params.APP_DC_NAME}",
                                     "-p",
                                     "TAG=${env.TAG}",
+                                    "SOURCE_REPOSITORY_URL=${params.SOURCE_REPOSITORY_URL}",
                                     "IMAGESTREAM_TAG=${params.IMAGE_STREAM_LATEST_TAG}",
                                     "REGISTRY_PROJECT=${params.REGISTRY_PROJECT}",
                                     "REGISTRY=${params.REGISTRY_URI}")
