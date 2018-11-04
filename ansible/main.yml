@@ -102,3 +102,11 @@
   roles:
     - role: puller
 
+- name: Start pipeline
+  hosts: dev
+  tasks:
+    - name: Start app pipeline build
+      command: >-
+        {{oc}} start-build app-pipeline -n dev
+      register: command_result
+      failed_when: "command_result.rc != 0 and 'already exists' not in command_result.stderr"
