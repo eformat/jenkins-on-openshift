@@ -195,7 +195,7 @@ pipeline {
                                 return
                             }
 
-                            openshift.tag("--source=docker",
+                            openshift.tag("--source=docker --insecure=true",
                                     "${imageName}",
                                     "${openshift.project()}/${params.IMAGE_STREAM_NAME}:${params.IMAGE_STREAM_LATEST_TAG}")
 
@@ -307,7 +307,7 @@ pipeline {
                                 openshift.apply(readFile(params.APP_TEMPLATE_PATH))
                             } else {
                                 openShiftApplyArgs = "--dry-run"
-                                openshift.tag("--source=docker",
+                                openshift.tag("--source=docker --insecure=true",
                                         "${imageName}",
                                         "${openshift.project()}/${params.IMAGE_STREAM_NAME}:${params.IMAGE_STREAM_LATEST_TAG}")
                             }
