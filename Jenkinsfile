@@ -298,9 +298,6 @@ pipeline {
                 script {
                     openshift.withCluster(params.STAGE_URI, env.STAGE_PSW) {
                         openshift.withProject(params.STAGE_PROJECT) {
-
-                            openshift.verbose()
-
                             def openShiftApplyArgs = ""
                             if (findFileChanges(params.APP_TEMPLATE_PATH)
                                     || !openshift.selector("template/${params.APP_DC_NAME}").exists()) {
